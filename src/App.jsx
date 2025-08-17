@@ -4,6 +4,9 @@ import { Card, CardContent } from '@/components/ui/card.jsx'
 import { Clock, Bitcoin, Heart, TrendingUp, Users, Download, ArrowRight } from 'lucide-react'
 import './App.css'
 import logoSvg from './assets/Logotype.svg'
+import backgroundPattern from './assets/background-pattern.png'
+import bitcoinIcon from './assets/bitcoin-icon.png'
+import fatherSonImage from './assets/father-son-money.jpg'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -14,7 +17,27 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div 
+        className="absolute inset-0 opacity-30"
+        style={{
+          backgroundImage: `url(${backgroundPattern})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      />
+      
+      {/* Flowing Overlay Patterns */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-teal-500/20 to-blue-600/20 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute top-1/3 right-0 w-80 h-80 bg-gradient-to-bl from-cyan-500/15 to-teal-600/15 rounded-full blur-3xl transform translate-x-1/2" />
+        <div className="absolute bottom-0 left-1/3 w-72 h-72 bg-gradient-to-tr from-blue-500/20 to-cyan-600/20 rounded-full blur-3xl transform translate-y-1/2" />
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-10">
       {/* Navigation */}
       <nav className="border-b border-slate-700/50 bg-slate-900/80 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -43,6 +66,9 @@ function App() {
       <section className="relative overflow-hidden">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
+            <div className="mb-8 flex justify-center">
+              <img src={bitcoinIcon} alt="Bitcoin" className="w-24 h-24 rounded-2xl shadow-2xl" />
+            </div>
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
               The <span className="text-orange-400">Missed Mint</span><br />
               That Built Bitcoin Reserve
@@ -101,14 +127,14 @@ function App() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="bg-gradient-to-br from-orange-500/10 to-orange-600/10 border-orange-500/20">
+              <Card className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 border-orange-500/40 backdrop-blur-sm">
                 <CardContent className="p-6">
                   <Bitcoin className="h-12 w-12 text-orange-400 mb-4" />
                   <h3 className="text-xl font-bold text-white mb-3">The Golden Ticket</h3>
-                  <p className="text-slate-300 mb-4">
+                  <p className="text-slate-200 mb-4">
                     Normal mint price: 0.2 BTC. But I held one of only 100 golden tickets — whitelist access at 0.1 BTC.
                   </p>
-                  <p className="text-orange-400 font-semibold">
+                  <p className="text-orange-300 font-semibold">
                     I'd earned that ticket two years earlier. It was supposed to be the reward for sticking it out.
                   </p>
                 </CardContent>
@@ -116,6 +142,9 @@ function App() {
 
               <Card className="bg-slate-900/50 border-slate-700">
                 <CardContent className="p-6">
+                  <div className="mb-4 flex justify-center">
+                    <img src={fatherSonImage} alt="Father teaching son about money" className="w-full h-32 object-cover rounded-lg" />
+                  </div>
                   <Heart className="h-12 w-12 text-orange-400 mb-4" />
                   <h3 className="text-xl font-bold text-white mb-3">For My Boys</h3>
                   <p className="text-slate-300 mb-4">
@@ -189,7 +218,7 @@ function App() {
                     <span className="text-orange-400 font-semibold">Peak value:</span> 0.3 BTC
                   </p>
                   <p className="text-red-400 text-xl font-bold">
-                    My boys missed out on $10K–$33K in potential value
+                    My boys missed out on $33,000+ in potential value
                   </p>
                 </div>
               </CardContent>
@@ -404,10 +433,13 @@ function App() {
                 Home
               </a>
               <a href="https://x.com/bitcoinreserve_" className="text-slate-400 hover:text-orange-400 transition-colors">
-                Twitter
+                X
               </a>
               <a href="https://www.instagram.com/bitcoinreserve_/" className="text-slate-400 hover:text-orange-400 transition-colors">
                 Instagram
+              </a>
+              <a href="https://www.facebook.com/people/Bitcoin-Reserve/61571421707409/" className="text-slate-400 hover:text-orange-400 transition-colors">
+                Facebook
               </a>
             </div>
           </div>
@@ -418,6 +450,7 @@ function App() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   )
 }
