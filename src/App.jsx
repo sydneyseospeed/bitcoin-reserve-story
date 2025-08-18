@@ -5,8 +5,9 @@ import { Clock, Bitcoin, Heart, TrendingUp, Users, Download, ArrowRight } from '
 import './App.css'
 import logoSvg from './assets/Logotype.svg'
 import backgroundPattern from './assets/background-pattern.png'
-import bitcoinIcon from './assets/bitcoin-icon.png'
-import fatherSonImage from './assets/father-son-money.jpg'
+import bitcoinIcon from './assets/bitcoin-favicon.png'
+import fatherSonImage from './assets/father-son-family.png'
+import goldenTicketImage from './assets/golden-ticket.png'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -115,11 +116,11 @@ function App() {
           <div className="prose prose-lg prose-invert max-w-none">
             <div className="bg-slate-900/50 rounded-lg p-8 mb-8 border border-slate-700">
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                Bitcoin Reserve was already in motion. I'd been building it quietly — nights, weekends, between bakery shifts. 
+                Bitcoin Reserve was already in motion. I'd been building it quietly, nights, weekends, between bakery shifts. 
                 Stacking sats through Bitaroo for my sons. Laying the groundwork for a real, public proof-of-work ledger.
               </p>
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
-                Not just for me — for every dad who wanted to leave something true.
+                Not just for me, for every dad who wanted to leave something true.
               </p>
               <p className="text-slate-300 text-lg leading-relaxed">
                 Then came the Taproot Wizards mint. The OG Ordinals project. Cultural. Iconic. Rare.
@@ -129,6 +130,9 @@ function App() {
             <div className="grid md:grid-cols-2 gap-8 mb-12">
               <Card className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 border-orange-500/40 backdrop-blur-sm">
                 <CardContent className="p-6">
+                  <div className="mb-4 flex justify-center">
+                    <img src={goldenTicketImage} alt="Golden Ticket" className="w-24 h-24 rounded-lg shadow-lg" />
+                  </div>
                   <Bitcoin className="h-12 w-12 text-orange-400 mb-4" />
                   <h3 className="text-xl font-bold text-white mb-3">The Golden Ticket</h3>
                   <p className="text-slate-200 mb-4">
@@ -274,7 +278,7 @@ function App() {
 
             <div className="text-center">
               <p className="text-lg text-slate-300 mb-4">
-                Since that day, I've minted something every single day — not ordinals. Proof.
+                Since that day, I've minted something every single week — not ordinals. Proof.
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
                 <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
@@ -340,9 +344,19 @@ function App() {
               <p className="text-xl text-slate-300 mb-6">
                 Even when you miss the mint, you can still build the ledger.
               </p>
-              <p className="text-lg text-orange-400 font-semibold">
+              <p className="text-lg text-orange-400 font-semibold mb-6">
                 One block at a time. Proof-of-work for the people you love.
               </p>
+              <div className="text-center">
+                <Button 
+                  size="lg"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold mr-4 mb-4"
+                  onClick={() => window.open('https://ledger.bitcoinreserve.com', '_blank')}
+                >
+                  View Bitcoin Dad Ledger
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -426,7 +440,10 @@ function App() {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center mb-4 md:mb-0">
               <img src={logoSvg} alt="Bitcoin Reserve" className="h-8 w-auto mr-4" />
-              <p className="text-slate-400">Building generational wealth, one block at a time.</p>
+              <div>
+                <p className="text-slate-400">Stealth wealth building for legacy. Sleep better. Stack slower.</p>
+                <p className="text-slate-500 text-sm">One dad, two sons, stacking every week.</p>
+              </div>
             </div>
             <div className="flex space-x-6">
               <a href="https://bitcoinreserve.bio" className="text-slate-400 hover:text-orange-400 transition-colors">
