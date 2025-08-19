@@ -1,0 +1,28 @@
+name: Lighthouse CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+      - run: npm i -g @lhci/cli
+      - name: Run Lighthouse on each URL
+        run: |
+          mkdir -p reports
+          while read url; do
+            echo "Auditing $url"
+            safe=$(echo $url | sed 's|https\?://||; s|/|-|g')
+            lhci collect --url="$url" --numberOfRuns=3 --outputPath="./reports/$safe"
+          done < urls.txt
+          lhci assert --config=./lighthouserc.json
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-reports
+          path: reports
