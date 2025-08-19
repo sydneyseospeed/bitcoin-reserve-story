@@ -11,33 +11,15 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '20' }
-      - run: npm i -g @lhci/cli
 
-      # 1) Collect reports
-      - name: Collect Lighthouse reports
-        run: |
-          mkdir -p reports
-          while read url; do
-            echo "Auditing $url"
-            safe=$(echo $url | sed 's|https\?://||; s|/|-|g')
-            lhci collect --url="$url" --numberOfRuns=3 --outputDir="./reports/$safe"
-          done < urls.txt
-
-      # 2) Assert, but don’t block artifact upload
-      - name: Assert thresholds
-        id: assert
-        continue-on-error: true
-        run: lhci assert --config=./lighthouserc.json
-
-      # 3) Always upload artifacts
-      - name: Upload reports
-        if: always()
-        uses: actions/upload-artifact@v4
+      - name: Lighthouse audits (3 runs each) + artifacts
+        uses: treosh/lighthouse-ci-action@v12
         with:
-          name: lighthouse-reports
-          path: reports
-
-      # 4) Fail the job if assertions failed
-      - name: Fail if assertions failed
-        if: steps.assert.outcome == 'failure'
-        run: exit 1
+          urls: |
+            https://bitcoin-reserve-story.vercel.app/
+            https://bitcoin-wife-script.vercel.app/
+            https://bitcoin-dad-ledger.vercel.app/
+          runs: 3
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true            # always gives you HTML/JSON
+          temporaryPublicStorage: true     # quick link in logs
