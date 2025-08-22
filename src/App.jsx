@@ -1,13 +1,16 @@
 import { useState } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { Card, CardContent } from '@/components/ui/card.jsx'
-import { Clock, Bitcoin, Heart, TrendingUp, Users, Download, ArrowRight } from 'lucide-react'
+import { Clock, Bitcoin, Heart, TrendingUp, Users, Download, ArrowRight, ExternalLink } from 'lucide-react'
 import './App.css'
 import logoSvg from './assets/Logotype.svg'
-import backgroundPattern from './assets/background-pattern.png'
+import backgroundPattern from './assets/brand/bg-waves.png'
 import bitcoinIcon from './assets/bitcoin-favicon.png'
 import fatherSonImage from './assets/father-son-family.png'
 import goldenTicketImage from './assets/golden-ticket.png'
+import xIcon from './assets/brand/x.svg'
+import instagramIcon from './assets/brand/instagram.svg'
+import facebookIcon from './assets/brand/facebook.svg'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -19,14 +22,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-      {/* Background Pattern */}
+      {/* 3D Background Pattern - Excluding header and footer */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
           backgroundImage: `url(${backgroundPattern})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
+          backgroundRepeat: 'no-repeat',
+          top: '64px', // Exclude header
+          bottom: '120px' // Exclude footer
         }}
       />
       
@@ -57,6 +62,9 @@ function App() {
                 <a href="#mission" className="text-slate-300 hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
                   Our Mission
                 </a>
+                <a href="#" className="text-slate-300 hover:text-orange-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                  Bitcoin Dad Ledger
+                </a>
               </div>
             </div>
           </div>
@@ -75,11 +83,11 @@ function App() {
               That Built Bitcoin Reserve
             </h1>
             <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
-              How a $33,000 mistake became the foundation for helping Bitcoin dads build generational wealth
+              How a $33,000+ mistake became the foundation for helping Bitcoin dads build generational wealth
             </p>
             <Button 
               size="lg" 
-              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold"
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25"
               onClick={() => document.getElementById('story').scrollIntoView({ behavior: 'smooth' })}
             >
               Read the Full Story
@@ -93,7 +101,7 @@ function App() {
       <section id="story" className="py-20 bg-slate-800/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl p-8 border border-orange-500/30">
+            <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl p-8 border border-orange-500/30 transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
                 "I had the whitelist. I had the BTC. I waited two years."
               </h2>
@@ -114,7 +122,7 @@ function App() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">The Setup</h2>
           
           <div className="prose prose-lg prose-invert max-w-none">
-            <div className="bg-slate-900/50 rounded-lg p-8 mb-8 border border-slate-700">
+            <div className="bg-slate-900/50 rounded-lg p-8 mb-8 border border-slate-700 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
               <p className="text-slate-300 text-lg leading-relaxed mb-6">
                 Bitcoin Reserve was already in motion. I'd been building it quietly, nights, weekends, between bakery shifts. 
                 Stacking sats through Bitaroo for my sons. Laying the groundwork for a real, public proof-of-work ledger.
@@ -128,15 +136,15 @@ function App() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 mb-12">
-              <Card className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 border-orange-500/40 backdrop-blur-sm">
-                <CardContent className="p-6">
+              <Card className="bg-gradient-to-br from-orange-500/20 to-orange-600/20 border-orange-500/40 backdrop-blur-sm transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/20">
+                <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">
-                    <img src={goldenTicketImage} alt="Golden Ticket" className="w-24 h-24 rounded-lg shadow-lg" />
+                    <img src={goldenTicketImage} alt="Golden Ticket" className="w-32 h-32 rounded-lg shadow-lg" />
                   </div>
-                  <Bitcoin className="h-12 w-12 text-orange-400 mb-4" />
+                  <Bitcoin className="h-12 w-12 text-orange-400 mb-4 mx-auto" />
                   <h3 className="text-xl font-bold text-white mb-3">The Golden Ticket</h3>
                   <p className="text-slate-200 mb-4">
-                    Normal mint price: 0.2 BTC. But I held one of only 100 golden tickets — whitelist access at 0.1 BTC.
+                    Normal mint price: 0.2 BTC. But I held one of only 100 golden tickets, whitelist access at 0.1 BTC.
                   </p>
                   <p className="text-orange-300 font-semibold">
                     I'd earned that ticket two years earlier. It was supposed to be the reward for sticking it out.
@@ -144,12 +152,12 @@ function App() {
                 </CardContent>
               </Card>
 
-              <Card className="bg-slate-900/50 border-slate-700">
-                <CardContent className="p-6">
+              <Card className="bg-slate-900/50 border-slate-700 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+                <CardContent className="p-6 text-center">
                   <div className="mb-4 flex justify-center">
                     <img src={fatherSonImage} alt="Father teaching son about money" className="w-full h-32 object-cover rounded-lg" />
                   </div>
-                  <Heart className="h-12 w-12 text-orange-400 mb-4" />
+                  <Heart className="h-12 w-12 text-orange-400 mb-4 mx-auto" />
                   <h3 className="text-xl font-bold text-white mb-3">For My Boys</h3>
                   <p className="text-slate-300 mb-4">
                     I pulled ~$800 from the boys' Bitaroo DCA fund, scraped together the rest, verified the Express wallet, and prepared.
@@ -169,19 +177,19 @@ function App() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">The Miss</h2>
           
-          <div className="bg-slate-900/50 rounded-lg p-8 border border-slate-700">
+          <div className="bg-slate-900/50 rounded-lg p-8 border border-slate-700 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
             <div className="grid md:grid-cols-3 gap-8 mb-8">
-              <div className="text-center">
+              <div className="text-center bg-orange-500/10 rounded-lg p-6 border border-orange-500/20 transform hover:scale-105 transition-all duration-300">
                 <Clock className="h-16 w-16 text-orange-400 mx-auto mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">8 Hours</h3>
                 <p className="text-slate-300">The golden ticket window</p>
               </div>
-              <div className="text-center">
+              <div className="text-center bg-orange-500/10 rounded-lg p-6 border border-orange-500/20 transform hover:scale-105 transition-all duration-300">
                 <div className="text-4xl font-bold text-orange-400 mb-2">3:00am</div>
                 <h3 className="text-xl font-bold text-white mb-2">AEST</h3>
                 <p className="text-slate-300">When it actually opened</p>
               </div>
-              <div className="text-center">
+              <div className="text-center bg-red-500/10 rounded-lg p-6 border border-red-500/20 transform hover:scale-105 transition-all duration-300">
                 <div className="text-4xl font-bold text-red-400 mb-2">7:00pm</div>
                 <h3 className="text-xl font-bold text-white mb-2">My Mistake</h3>
                 <p className="text-slate-300">When I thought it opened</p>
@@ -210,9 +218,9 @@ function App() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">The Cost</h2>
           
           <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-gradient-to-br from-red-500/10 to-red-600/10 border-red-500/20">
-              <CardContent className="p-8">
-                <TrendingUp className="h-12 w-12 text-red-400 mb-4" />
+            <Card className="bg-gradient-to-br from-red-500/10 to-red-600/10 border-red-500/20 transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/10">
+              <CardContent className="p-8 text-center">
+                <TrendingUp className="h-12 w-12 text-red-400 mb-4 mx-auto" />
                 <h3 className="text-2xl font-bold text-white mb-4">The Numbers</h3>
                 <div className="space-y-3">
                   <p className="text-slate-300">
@@ -228,9 +236,9 @@ function App() {
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/50 border-slate-700">
-              <CardContent className="p-8">
-                <Heart className="h-12 w-12 text-orange-400 mb-4" />
+            <Card className="bg-slate-900/50 border-slate-700 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+              <CardContent className="p-8 text-center">
+                <Heart className="h-12 w-12 text-orange-400 mb-4 mx-auto" />
                 <h3 className="text-2xl font-bold text-white mb-4">The Real Pain</h3>
                 <p className="text-slate-300 text-lg leading-relaxed mb-4">
                   But the worst part wasn't the money. It was what it meant.
@@ -251,7 +259,7 @@ function App() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">The Cementing Moment</h2>
           
-          <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl p-8 md:p-12 border border-orange-500/30">
+          <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl p-8 md:p-12 border border-orange-500/30 transform hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/10">
             <p className="text-2xl text-white font-bold mb-6 text-center">
               That night didn't kill Bitcoin Reserve. It forged it.
             </p>
@@ -278,16 +286,16 @@ function App() {
 
             <div className="text-center">
               <p className="text-lg text-slate-300 mb-4">
-                Since that day, I've minted something every single week — not ordinals. Proof.
+                Since that day, I've minted something every single week, not ordinals. Proof.
               </p>
               <div className="grid md:grid-cols-3 gap-4 text-center">
-                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700 transform hover:scale-105 transition-all duration-300">
                   <p className="text-orange-400 font-semibold">Proof of intent</p>
                 </div>
-                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700 transform hover:scale-105 transition-all duration-300">
                   <p className="text-orange-400 font-semibold">Proof of presence</p>
                 </div>
-                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700">
+                <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700 transform hover:scale-105 transition-all duration-300">
                   <p className="text-orange-400 font-semibold">Proof that I won't let one miss become my story</p>
                 </div>
               </div>
@@ -301,7 +309,7 @@ function App() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">The Real Ledger</h2>
           
-          <div className="bg-slate-900/50 rounded-lg p-8 border border-slate-700 mb-12">
+          <div className="bg-slate-900/50 rounded-lg p-8 border border-slate-700 mb-12 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
             <p className="text-2xl text-orange-400 font-bold text-center mb-6">
               Bitcoin Reserve wasn't born that night. But it was sworn in that night.
             </p>
@@ -312,157 +320,164 @@ function App() {
 
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
-                <div className="bg-orange-500/10 rounded-lg p-6 border border-orange-500/20">
+                <div className="bg-orange-500/10 rounded-lg p-6 border border-orange-500/20 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10">
                   <p className="text-orange-400 font-semibold mb-2">Each DCA</p>
                   <p className="text-slate-300 text-sm">Building the foundation</p>
                 </div>
               </div>
               <div className="text-center">
-                <div className="bg-orange-500/10 rounded-lg p-6 border border-orange-500/20">
+                <div className="bg-orange-500/10 rounded-lg p-6 border border-orange-500/20 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10">
                   <p className="text-orange-400 font-semibold mb-2">Each cold storage move</p>
                   <p className="text-slate-300 text-sm">Securing the future</p>
                 </div>
               </div>
               <div className="text-center">
-                <div className="bg-orange-500/10 rounded-lg p-6 border border-orange-500/20">
+                <div className="bg-orange-500/10 rounded-lg p-6 border border-orange-500/20 transform hover:scale-105 transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/10">
                   <p className="text-orange-400 font-semibold mb-2">Each story I record</p>
-                  <p className="text-slate-300 text-sm">Another brick in the foundation</p>
+                  <p className="text-slate-300 text-sm">Documenting the journey</p>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="text-center">
-            <p className="text-xl text-slate-300 leading-relaxed mb-8">
-              Each story I record is another brick in the foundation my sons will stand on.
+            <p className="text-xl text-slate-300 mb-8">
+              Every transaction. Every decision. Every lesson learned. All public. All transparent.
             </p>
-            
-            <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-lg p-8 border border-orange-500/30">
-              <p className="text-2xl text-white font-bold mb-4">
-                And every dad who reads this? You're not too late.
-              </p>
-              <p className="text-xl text-slate-300 mb-6">
-                Even when you miss the mint, you can still build the ledger.
-              </p>
-              <p className="text-lg text-orange-400 font-semibold mb-6">
-                One block at a time. Proof-of-work for the people you love.
-              </p>
-              <div className="text-center">
-                <Button 
-                  size="lg"
-                  className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold mr-4 mb-4"
-                  onClick={() => window.open('https://ledger.bitcoinreserve.com', '_blank')}
-                >
-                  View Bitcoin Dad Ledger
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </div>
-            </div>
+            <Button 
+              size="lg" 
+              className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 text-lg font-semibold transform hover:scale-105 transition-all duration-200 hover:shadow-lg hover:shadow-orange-500/25"
+              onClick={() => window.open('#', '_blank')}
+            >
+              View Bitcoin Dad Ledger
+              <ExternalLink className="ml-2 h-5 w-5" />
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Join the Mission */}
+      {/* Community & Handbook Section */}
       <section className="py-20 bg-slate-800/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Join the Mission
-            </h2>
-            <p className="text-xl text-slate-300">
-              Help us reach 10,000 Bitcoin dads building generational wealth
-            </p>
-          </div>
-
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">Join the Mission</h2>
+          
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <Card className="bg-slate-900/50 border-slate-700">
-              <CardContent className="p-6">
-                <Download className="h-12 w-12 text-orange-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Get the Bitcoin Dad Handbook</h3>
-                <p className="text-slate-300 mb-4">
-                  Everything you need to start stacking sats safely for your family
+            <Card className="bg-slate-900/50 border-slate-700 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+              <CardContent className="p-8 text-center">
+                <Download className="h-12 w-12 text-orange-400 mb-4 mx-auto" />
+                <h3 className="text-2xl font-bold text-white mb-4">Download Bitcoin Dad Handbook</h3>
+                <p className="text-slate-300 mb-6">
+                  Complete guide to building generational wealth through Bitcoin. Practical strategies, real examples, proven methods.
                 </p>
-                <Button className="bg-orange-500 hover:bg-orange-600 text-white w-full">
-                  Download Free
+                <Button 
+                  size="lg" 
+                  className="bg-orange-500 hover:bg-orange-600 text-white w-full transform hover:scale-105 transition-all duration-200"
+                >
+                  Get Handbook Free
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="bg-slate-900/50 border-slate-700">
-              <CardContent className="p-6">
-                <Users className="h-12 w-12 text-orange-400 mb-4" />
-                <h3 className="text-xl font-bold text-white mb-3">Join Bitcoin Dad Vault</h3>
-                <p className="text-slate-300 mb-4">
-                  Private community of fathers building financial sovereignty together
+            <Card className="bg-slate-900/50 border-slate-700 transform hover:scale-105 transition-all duration-300 hover:shadow-xl">
+              <CardContent className="p-8 text-center">
+                <Users className="h-12 w-12 text-orange-400 mb-4 mx-auto" />
+                <h3 className="text-2xl font-bold text-white mb-4">Join Bitcoin Dad's Community</h3>
+                <p className="text-slate-300 mb-6">
+                  Connect with other Bitcoin dads building legacy wealth. Share strategies, learn together, grow stronger.
                 </p>
-                <Button variant="outline" className="border-slate-600 text-slate-300 hover:bg-slate-800 w-full">
+                <Button 
+                  size="lg" 
+                  className="bg-orange-500 hover:bg-orange-600 text-white w-full transform hover:scale-105 transition-all duration-200"
+                  onClick={() => window.open('https://bitcoinreserve.bio', '_blank')}
+                >
                   Join Community
                 </Button>
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
 
+      {/* Email Form */}
+      <section className="py-20">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-2xl p-8 border border-orange-500/30">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold text-white mb-4">
-                Stay Connected
-              </h3>
-              <p className="text-slate-300 mb-6">
-                Get updates on our mission and new resources for Bitcoin dads
-              </p>
-              
-              <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="flex-1 px-4 py-3 rounded-lg bg-slate-900 border border-slate-600 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                    required
-                  />
-                  <Button 
-                    type="submit"
-                    className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 font-semibold"
-                  >
-                    Join Mission
-                  </Button>
-                </div>
-              </form>
-            </div>
+            <h2 className="text-3xl font-bold text-white mb-4 text-center">Stay Connected</h2>
+            <p className="text-xl text-slate-300 mb-8 text-center">
+              Get updates on the Bitcoin Reserve journey and exclusive Bitcoin dad insights
+            </p>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email address"
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-slate-600 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                  required
+                />
+              </div>
+              <Button 
+                type="submit" 
+                size="lg" 
+                className="w-full bg-orange-500 hover:bg-orange-600 text-white py-3 text-lg font-semibold transform hover:scale-105 transition-all duration-200"
+              >
+                Join Mission
+              </Button>
+            </form>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-700 bg-slate-900">
+      <footer className="bg-slate-900 border-t border-slate-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center mb-4 md:mb-0">
-              <img src={logoSvg} alt="Bitcoin Reserve" className="h-8 w-auto mr-4" />
-              <div>
-                <p className="text-slate-400">Stealth wealth building for legacy. Sleep better. Stack slower.</p>
-                <p className="text-slate-500 text-sm">One dad, two sons, stacking every week.</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <img src={logoSvg} alt="Bitcoin Reserve" className="h-8 w-auto mb-4" />
+              <p className="text-slate-400 text-sm mb-4">
+                Stealth wealth building for legacy. Sleep better. Stack slower.
+              </p>
+              <p className="text-slate-500 text-xs">
+                One dad, two sons, stacking every week.
+              </p>
+            </div>
+            
+            <div>
+              <h3 className="text-white font-semibold mb-4">Quick Links</h3>
+              <div className="space-y-2">
+                <a href="https://bitcoinreserve.bio" className="block text-slate-400 hover:text-orange-400 text-sm transition-colors">
+                  Home
+                </a>
+                <a href="#story" className="block text-slate-400 hover:text-orange-400 text-sm transition-colors">
+                  The Story
+                </a>
+                <a href="#mission" className="block text-slate-400 hover:text-orange-400 text-sm transition-colors">
+                  Our Mission
+                </a>
               </div>
             </div>
-            <div className="flex space-x-6">
-              <a href="https://bitcoinreserve.bio" className="text-slate-400 hover:text-orange-400 transition-colors">
-                Home
-              </a>
-              <a href="https://x.com/bitcoinreserve_" className="text-slate-400 hover:text-orange-400 transition-colors">
-                X
-              </a>
-              <a href="https://www.instagram.com/bitcoinreserve_/" className="text-slate-400 hover:text-orange-400 transition-colors">
-                Instagram
-              </a>
-              <a href="https://www.facebook.com/people/Bitcoin-Reserve/61571421707409/" className="text-slate-400 hover:text-orange-400 transition-colors">
-                Facebook
-              </a>
+            
+            <div>
+              <h3 className="text-white font-semibold mb-4">Connect</h3>
+              <div className="flex space-x-4 mb-4">
+                <a href="#" className="text-slate-400 hover:text-orange-400 transition-colors">
+                  <img src={xIcon} alt="X" className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-slate-400 hover:text-orange-400 transition-colors">
+                  <img src={instagramIcon} alt="Instagram" className="w-5 h-5" />
+                </a>
+                <a href="#" className="text-slate-400 hover:text-orange-400 transition-colors">
+                  <img src={facebookIcon} alt="Facebook" className="w-5 h-5" />
+                </a>
+              </div>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t border-slate-700 text-center">
-            <p className="text-slate-400">
-              © 2025 Bitcoin Reserve. All rights reserved. Proof-of-work for the people you love.
+          
+          <div className="border-t border-slate-700 pt-8 mt-8">
+            <p className="text-slate-500 text-sm text-center">
+              All rights reserved, proof of work for the people you love.
             </p>
           </div>
         </div>
@@ -473,3 +488,4 @@ function App() {
 }
 
 export default App
+
